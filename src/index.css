@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Semantic tokens */
+  --bg: #ffffff;
+  --bg-page: #F8F7F4;
+  --bg-secondary: #F5F4F0;
+  --bg-hover: #EFEEE9;
+  --bg-active: #E8E7E1;
+  --border: #E0DED8;
+  --border-light: #ECEAE4;
+  --text: #1A1A1A;
+  --text-secondary: #5F5E5A;
+  --text-muted: #9C9B96;
+
+  /* Stage / accent palette — desaturated, warm */
+  --c-purple-50: #EEEDFE; --c-purple-100: #CECBF6;
+  --c-purple-600: #534AB7; --c-purple-800: #3C3489;
+  --c-teal-50: #E1F5EE; --c-teal-100: #9FE1CB;
+  --c-teal-600: #0F6E56; --c-teal-800: #085041;
+  --c-amber-50: #FAEEDA; --c-amber-100: #FAC775;
+  --c-amber-600: #854F0B; --c-amber-800: #633806;
+  --c-red-50: #FCEBEB; --c-red-100: #F7C1C1;
+  --c-red-600: #A32D2D; --c-red-800: #791F1F;
+  --c-blue-50: #E6F1FB; --c-blue-100: #B5D4F4;
+  --c-blue-600: #185FA5; --c-blue-800: #0C447C;
+  --c-green-50: #EAF3DE; --c-green-100: #C0DD97;
+  --c-green-600: #3B6D11;
+  --c-gray-50: #F1EFE8; --c-gray-200: #B4B2A9;
+  --c-gray-600: #5F5E5A;
+  --c-coral-50: #FAECE7; --c-coral-100: #F5C4B3;
+  --c-coral-600: #993C1D; --c-coral-800: #712B13;
+
+  /* Functional */
+  --primary: var(--c-purple-600);
+  --primary-hover: var(--c-purple-800);
+  --primary-light: var(--c-purple-50);
+  --primary-border: var(--c-purple-100);
+  --danger: var(--c-red-600);
+  --danger-light: var(--c-red-50);
+  --danger-border: var(--c-red-100);
+
+  --radius: 8px;
+  --radius-sm: 6px;
+  --radius-lg: 12px;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg-page);
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--c-blue-600);
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--primary-light);
+  color: var(--primary);
+}
