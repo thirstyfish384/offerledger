@@ -15,7 +15,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const app = express()
 
 // Middleware
-app.use(cors({ origin: config.frontendUrl }))
+app.use(cors({ origin: config.frontendUrl ?? true }))
 app.use(express.json({ limit: '5mb' }))
 
 // Public routes
