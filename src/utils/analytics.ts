@@ -1,11 +1,8 @@
 import posthog from 'posthog-js'
 
-posthog.init(import.meta.env.VITE_POSTHOG_KEY, {
-  api_host: import.meta.env.VITE_POSTHOG_HOST,
+posthog.init('phx_zw65e5vLT3cLBFLyTxpfDaoufVWeE8BoNJb9JzgGfGuWCyT6', {
+  api_host: 'https://us.i.posthog.com',
   person_profiles: 'identified_only',
-  loaded: (ph) => {
-    console.log('[posthog] initialized, distinct_id:', ph.get_distinct_id())
-  },
 })
 
 export const sessionStart = Date.now()
