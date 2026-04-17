@@ -1,6 +1,6 @@
 import posthog from 'posthog-js'
 
-posthog.init('phx_zw65e5vLT3cLBFLyTxpfDaoufVWeE8BoNJb9JzgGfGuWCyT6', {
+posthog.init(import.meta.env.VITE_POSTHOG_KEY, {
   api_host: 'https://us.i.posthog.com',
   person_profiles: 'identified_only',
 })
