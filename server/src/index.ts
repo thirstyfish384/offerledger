@@ -29,7 +29,7 @@ app.use('/api/sync', authMiddleware, syncRouter)
 
 // Serve frontend static files in production
 const publicDir = path.resolve(__dirname, '../public')
-app.use(express.static(publicDir))
+app.use(express.static(publicDir, { index: false }))
 app.get('{*path}', (_req, res) => {
   const indexPath = path.join(publicDir, 'index.html')
   const html = fs.readFileSync(indexPath, 'utf-8')
