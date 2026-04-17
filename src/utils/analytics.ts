@@ -1,23 +1,14 @@
-import posthog from 'posthog-js'
-
-const posthogKey = (window as Window & { __POSTHOG_KEY__?: string }).__POSTHOG_KEY__
-  || import.meta.env.VITE_POSTHOG_KEY
-
-if (posthogKey) {
-  posthog.init(posthogKey, {
-    api_host: 'https://us.i.posthog.com',
-    person_profiles: 'identified_only',
-  })
-}
-
 export const sessionStart = Date.now()
 let viewStartTime = Date.now()
+
+type Posthog = { capture: (event: string, props?: Record<string, unknown>) => void }
 
 export function track(event: string, properties?: Record<string, unknown>) {
   if (import.meta.env.DEV) {
     console.log(`[analytics] ${event}`, properties)
   }
-  posthog.capture(event, properties)
+  const ph = (window as Window & { posthog?: Posthog }).posthog
+  ph?.capture(event, properties)
 }
 
 export function countFilledFields(record: { company?: string; position?: string; stage?: string; keyDate?: string; priority?: string; channel?: string }): number {
