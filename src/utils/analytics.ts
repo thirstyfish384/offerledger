@@ -1,9 +1,14 @@
 import posthog from 'posthog-js'
 
-posthog.init(import.meta.env.VITE_POSTHOG_KEY, {
-  api_host: 'https://us.i.posthog.com',
-  person_profiles: 'identified_only',
-})
+const posthogKey = (window as Window & { __POSTHOG_KEY__?: string }).__POSTHOG_KEY__
+  || import.meta.env.VITE_POSTHOG_KEY
+
+if (posthogKey) {
+  posthog.init(posthogKey, {
+    api_host: 'https://us.i.posthog.com',
+    person_profiles: 'identified_only',
+  })
+}
 
 export const sessionStart = Date.now()
 let viewStartTime = Date.now()

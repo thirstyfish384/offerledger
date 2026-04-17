@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import path from 'path'
+import fs from 'fs'
 import { fileURLToPath } from 'url'
 import { config } from './config.js'
 import { errorHandler } from './middleware/errorHandler.js'
@@ -30,7 +31,13 @@ app.use('/api/sync', authMiddleware, syncRouter)
 const publicDir = path.resolve(__dirname, '../public')
 app.use(express.static(publicDir))
 app.get('{*path}', (_req, res) => {
-  res.sendFile(path.join(publicDir, 'index.html'))
+  const indexPath = path.join(publicDir, 'index.html')
+  const html = fs.readFileSync(indexPath, 'utf-8')
+  const injected = html.replace(
+    '<head>',
+    `<head><script>window.__POSTHOG_KEY__="${config.posthogKey}"</script>`
+  )
+  res.type('html').send(injected)
 })
 
 // Error handler

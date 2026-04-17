@@ -9,4 +9,5 @@ export const config = {
   jwtExpiresIn: '7d',
   dbPath: process.env.DB_PATH || path.resolve(__dirname, '../data/offerledger.db'),
   frontendUrl: process.env.FRONTEND_URL || (process.env.NODE_ENV === 'production' ? undefined : 'http://localhost:5173'),
+  posthogKey: process.env.POSTHOG_KEY || '',
 }
