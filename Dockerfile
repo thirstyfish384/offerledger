@@ -11,6 +11,10 @@ RUN npm ci
 COPY index.html vite.config.ts tsconfig*.json eslint.config.js ./
 COPY public/ public/
 COPY src/ src/
+ARG VITE_POSTHOG_KEY
+ARG VITE_POSTHOG_HOST
+ENV VITE_POSTHOG_KEY=$VITE_POSTHOG_KEY
+ENV VITE_POSTHOG_HOST=$VITE_POSTHOG_HOST
 RUN npm run build
 
 # ── Build server ──
