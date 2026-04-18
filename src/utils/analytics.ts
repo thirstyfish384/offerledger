@@ -1,14 +1,14 @@
 export const sessionStart = Date.now()
 let viewStartTime = Date.now()
 
-type Posthog = { capture: (event: string, props?: Record<string, unknown>) => void }
+type GTag = (command: string, ...args: unknown[]) => void
 
 export function track(event: string, properties?: Record<string, unknown>) {
   if (import.meta.env.DEV) {
     console.log(`[analytics] ${event}`, properties)
   }
-  const ph = (window as Window & { posthog?: Posthog }).posthog
-  ph?.capture(event, properties)
+  const gtag = (window as Window & { gtag?: GTag }).gtag
+  gtag?.('event', event, properties)
 }
 
 export function countFilledFields(record: { company?: string; position?: string; stage?: string; keyDate?: string; priority?: string; channel?: string }): number {
